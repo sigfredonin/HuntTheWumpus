@@ -1,0 +1,19 @@
+Works with : Free Pascal Compiler version 3.2.2 [2021/05/15] for i386
+
+This implementation is written in standard Pascal and conforms to ISO 7185 (1990) except:
+- it uses the 'otherwise' clause of the case statement, defined in the Extended Pascal standard ISO 10206 (1990);
+  (to compile with Borland Pascal, change 'otherwise' to 'else').
+It has as environment dependencies:
+- procedure val(S : string; var V integer, var Code : integer)
+  to convert a string to integer;
+- function random(n : integer) : integer;
+  to obtain a pseudorandom number between 0 and n-1;
+- procedure randomize();
+  to set the random number generator seed from the system clock.
+GNU Pascal, Free Pascal, and Borland Pascal provide all of these routines, but the program has only been tested with Free Pascal.
+
+The Pascal code closely follows the design of the FORTH implementation.  The objective is clarity, rather than compactness.
+
+The Pascal code departs from the original BASIC implementation in that the player is not allowed to make the second room in a crooked arrow's path be the room that the hunter is in. That would require the arrow to exit the first room in its path the way it came in, assuming the first room can be reached from the hunter's room. Such a maneuver would exceed its crookedness capabilities. The original code did not check for this possibility.
+
+The Pascal code also departs from the original in the wording of messages to the player, the wording of the game instructions, and the manner in which it treats invalid player inputs. 

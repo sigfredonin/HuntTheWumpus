@@ -1,0 +1,561 @@
+E:\Pascal\HuntTheWumpus\build>Wumpus.exe
+----  ----  Hunt the Wumpus  ----  ----
+- Version 1.00 - Pascal
+----  ----  ---------------  ----  ----
+Show instructions (y/n)?
+> y
+
+---- INSTRUCTIONS ----
+
+Welcome to Hunt the Wumpus! You are a hunter, looking to bag a Wumpus.
+
+The Wumpus lives in a cave of twenty rooms, each connected by
+tunnels to three other rooms, as in a dodecahedron.
+
+There are HAZARDS!!
+
+The Wumpus - One room has the Wumpus in it. If the Wumpus
+finds you in the room with it, it will eat you and you lose.
+
+Bottomless Pits - Two rooms have bottomless pits in them.
+If you go there, you fall into the pit and lose.
+
+Super Bats - Two other rooms have super bats in them.
+If you go there, a bat grabs you and takes you to another
+room, at random. This might be troublesome.
+
+As you are hunting, you will be able to sense something of
+the hazards, when you are in a room adjacent to one.
+
+- You can smell the Wumpus, when it is nearby.
+- You can feel a breeze, when there is a pit nearby
+- You can hear a rustling sound, when there are bats nearby.
+
+The Wumpus is not bothered by the hazards. It has sucker
+feet, so it can cling to the walls of a pit, and it's too heavy
+for the super bats to lift. Usually, it is asleep.
+
+Two things wake up the Wumpus: you entering its room, or
+you shooting an arrow (anywhere in the cave!). When it
+wakes, it moves into an adjacent room (P=3/4) or stays
+where it is (P=1/4). After that, if it is where you are
+it eats you and you lose.
+
+The computer starts you in a randomly chosen room.
+Each turn you can move to an adjacent room or shoot an arrow.
+
+You are furnished with 5 crooked arrows, which you can program
+to go into 1 to 5 rooms. Starting from the room you are in,
+the arrow will go from room to room provided there is a tunnel
+from where it is to the next room on its list. If there is no
+tunnel, the arrow bounces on the walls of the cave and moves into
+an adjacent room at random, possibly the one you are in.
+
+- If the arrow hits the Wumpus, you win.
+- If the arrow hits you, you lose.
+- If you run out of arrows, you lose.
+
+When the game is over, you can start a new game.
+You can choose to start over with the same configuration
+as the game you just finished, that is: with you, the Wumpus,
+the pits, and the bats where they started in the game you
+just finished; or you can start fresh, with everything in
+new places (well, probably). In any case, you get a fresh
+supply of five arrows.
+
+Good luck!
+You are in room 4
+Tunnels lead to rooms: 3 14 5
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 3
+You are in room 3
+Tunnels lead to rooms: 2 12 4
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 4
+You are in room 4
+Tunnels lead to rooms: 3 14 5
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 5
+You are in room 5
+Tunnels lead to rooms: 4 6 1
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 6
+You are in room 6
+Tunnels lead to rooms: 15 5 7
+I smell a Wumpus!
+I feel a draft!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 5
+Enter room 1
+> 15
+Enter room 2
+> 16
+Enter room 3
+> 17
+Enter room 4
+> 7
+Enter room 5
+> 8
+Arrow path (5) : 15 16 17 7 8
+6 --> 15
+Aha! You got the Wumpus!
+Congratulations! You got the Wumpus! But next time, hee, hee, hee!
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> n
+OK, you, the Wumpus, pits, and bats in new rooms (probably).
+You are in room 7
+Tunnels lead to rooms: 6 17 8
+I feel a draft!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 6
+Aaaaggghhh! You fell in a pit! You lose!
+Condolences, maybe better luck next time.
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> y
+OK, you, the Wumpus, pits, and bats in the same rooms.
+You are in room 7
+Tunnels lead to rooms: 6 17 8
+I feel a draft!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 17
+You are in room 17
+Tunnels lead to rooms: 16 7 18
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 18
+You are in room 18
+Tunnels lead to rooms: 17 9 19
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 19
+You are in room 19
+Tunnels lead to rooms: 18 11 20
+I smell a Wumpus!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 20
+You are in room 20
+Tunnels lead to rooms: 19 13 16
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 13
+You are in room 13
+Tunnels lead to rooms: 12 20 14
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 12
+Oh oh oh! A bat's got you! Oh ohhh ...
+... the bat dropped you in room 19
+You are in room 19
+Tunnels lead to rooms: 18 11 20
+I smell a Wumpus!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 1
+Enter room 1
+> 11
+Arrow path (1) : 11
+19 --> 11
+Aha! You got the Wumpus!
+Congratulations! You got the Wumpus! But next time, hee, hee, hee!
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> n
+OK, you, the Wumpus, pits, and bats in new rooms (probably).
+You are in room 10
+Tunnels lead to rooms: 9 2 11
+I feel a draft!
+I smell a Wumpus!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 9
+Aaaaggghhh! You fell in a pit! You lose!
+Condolences, maybe better luck next time.
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> y
+OK, you, the Wumpus, pits, and bats in the same rooms.
+You are in room 10
+Tunnels lead to rooms: 9 2 11
+I feel a draft!
+I smell a Wumpus!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 5
+Enter room 1
+> 11
+Enter room 2
+> 12
+Enter room 3
+> 3
+Enter room 4
+> 2
+Enter room 5
+> 10
+Arrow path (5) : 11 12 3 2 10
+10 --> 11 --> 12 --> 3 --> 2
+Aha! You got the Wumpus!
+Congratulations! You got the Wumpus! But next time, hee, hee, hee!
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> n
+OK, you, the Wumpus, pits, and bats in new rooms (probably).
+You are in room 15
+Tunnels lead to rooms: 14 16 6
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 6
+You are in room 6
+Tunnels lead to rooms: 15 5 7
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 5
+You are in room 5
+Tunnels lead to rooms: 4 6 1
+I feel a draft!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 6
+You are in room 6
+Tunnels lead to rooms: 15 5 7
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 7
+You are in room 7
+Tunnels lead to rooms: 6 17 8
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 8
+You are in room 8
+Tunnels lead to rooms: 7 1 9
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 9
+Oh oh oh! A bat's got you! Oh ohhh ...
+... the bat dropped you in room 11
+You are in room 11
+Tunnels lead to rooms: 10 19 12
+I feel a draft!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 12
+You are in room 12
+Tunnels lead to rooms: 11 3 13
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 13
+You are in room 13
+Tunnels lead to rooms: 12 20 14
+I smell a Wumpus!
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 5
+Enter room 1
+> 13
+Enter room 2
+> 14
+Enter room 3
+> 4
+Enter room 4
+> 3
+Enter room 5
+> 12
+Arrow path (5) : 13 14 4 3 12
+13 -->
+Uh oh! You hit the cave wall, arrow gone astray!
+ --> 20
+Aha! You got the Wumpus!
+Congratulations! You got the Wumpus! But next time, hee, hee, hee!
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> n
+OK, you, the Wumpus, pits, and bats in new rooms (probably).
+You are in room 10
+Tunnels lead to rooms: 9 2 11
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 9
+You are in room 9
+Tunnels lead to rooms: 8 18 10
+I hear a rustling sound!
+I smell a Wumpus!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 5
+Enter room 1
+> 18
+Enter room 2
+> 19
+Enter room 3
+> 10
+Enter room 4
+> 9
+Enter room 5
+> 8
+Arrow path (5) : 18 19 10 9 8
+9 --> 18
+Aha! You got the Wumpus!
+Congratulations! You got the Wumpus! But next time, hee, hee, hee!
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> n
+OK, you, the Wumpus, pits, and bats in new rooms (probably).
+You are in room 10
+Tunnels lead to rooms: 9 2 11
+I feel a draft!
+I smell a Wumpus!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 5
+Enter room 1
+> 9
+Enter room 2
+> 10
+Huh, arrows aren't that crooked!
+Enter room 2
+> 18
+Enter room 3
+> 19
+Enter room 4
+> 11
+Enter room 5
+> 10
+Arrow path (5) : 9 18 19 11 10
+10 --> 9 --> 18 --> 19 --> 11
+Aha! You got the Wumpus!
+Congratulations! You got the Wumpus! But next time, hee, hee, hee!
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> n
+OK, you, the Wumpus, pits, and bats in new rooms (probably).
+You are in room 9
+Tunnels lead to rooms: 8 18 10
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 10
+You are in room 10
+Tunnels lead to rooms: 9 2 11
+I feel a draft!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 9
+You are in room 9
+Tunnels lead to rooms: 8 18 10
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 8
+You are in room 8
+Tunnels lead to rooms: 7 1 9
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 7
+You are in room 7
+Tunnels lead to rooms: 6 17 8
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 6
+You are in room 6
+Tunnels lead to rooms: 15 5 7
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 5
+You are in room 5
+Tunnels lead to rooms: 4 6 1
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 1
+Oh oh oh! A bat's got you! Oh ohhh ...
+... the bat dropped you in room 2
+Aaaaggghhh! You fell in a pit! You lose!
+Condolences, maybe better luck next time.
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> y
+OK, you, the Wumpus, pits, and bats in the same rooms.
+You are in room 9
+Tunnels lead to rooms: 8 18 10
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 5
+Enter room 1
+> 10
+Enter room 2
+> 11
+Enter room 3
+> 12
+Enter room 4
+> 13
+Enter room 5
+> 14
+Arrow path (5) : 10 11 12 13 14
+9 --> 10 --> 11 --> 12 --> 13 --> 14
+You missed!
+Uh oh! You disturbed the Wumpus!
+Phew! The Wumpus didn't get you.
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 5
+Enter room 1
+> 8
+Enter room 2
+> 7
+Enter room 3
+> 17
+Enter room 4
+> 18
+Enter room 5
+> 9
+Arrow path (5) : 8 7 17 18 9
+9 --> 8 --> 7 --> 17 --> 18 --> 9
+Ouch! Arrow got you! You lose!
+Condolences, maybe better luck next time.
+Play again (y/n)?
+> y
+OK, play again ...
+Same rooms (y/n)?
+> n
+OK, you, the Wumpus, pits, and bats in new rooms (probably).
+You are in room 13
+Tunnels lead to rooms: 12 20 14
+I feel a draft!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 1
+Enter room 1
+> 12
+Arrow path (1) : 12
+13 --> 12
+You missed!
+Uh oh! You disturbed the Wumpus!
+Phew! The Wumpus didn't get you.
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 1
+Enter room 1
+> 14
+Arrow path (1) : 14
+13 --> 14
+You missed!
+Uh oh! You disturbed the Wumpus!
+Phew! The Wumpus didn't get you.
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 1
+Enter room 1
+> 20
+Arrow path (1) : 20
+13 --> 20
+You missed!
+Uh oh! You disturbed the Wumpus!
+Phew! The Wumpus didn't get you.
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> m
+Where do you want to go?
+> 20
+You are in room 20
+Tunnels lead to rooms: 19 13 16
+I feel a draft!
+I hear a rustling sound!
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 1
+Enter room 1
+> 19
+Arrow path (1) : 19
+20 --> 19
+You missed!
+Uh oh! You disturbed the Wumpus!
+Phew! The Wumpus didn't get you.
+What do you want to do (m=move, s=shoot, w=where am I?)?
+> s
+How many rooms should the arrow traverse (1..5)?
+> 1
+Enter room 1
+> 16
+Arrow path (1) : 16
+20 --> 16
+You missed!
+Uh oh! You disturbed the Wumpus!
+Phew! The Wumpus didn't get you.
+You're out of arrows, you lose!
+Condolences, maybe better luck next time.
+Play again (y/n)?
+> n
+Bye

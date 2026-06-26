@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "PAS build active file",
+      "command": "fpc",
+      "args": ["-FE${workspaceFolder}/build", "-g", "-gw", "${file}"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "dependsOn": "PAS create build folder"
+    },
+    {
+      "type": "shell",
+      "label": "PAS create build folder",
+      "command": "md",
+      "args": ["-force", "${workspaceFolder}/build"],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "PAS run active file",
+      "command": "${workspaceFolder}/build/${fileBasenameNoExtension}.exe",
+      "problemMatcher": [],
+      "dependsOn": "PAS build active file"
+    }
+  ]
+}

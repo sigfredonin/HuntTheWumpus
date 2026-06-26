@@ -1,0 +1,14 @@
+{
+    "configurations": [
+
+        {
+            "type": "gdb",
+            "request": "launch",
+            "name": "Launch Program",
+            "target": "./build/Wumpus.exe",
+            "cwd": "${workspaceRoot}",
+            "valuesFormatting": "parseText",
+            "preLaunchTask": "${defaultBuildTask}"
+        }
+    ]
+}
