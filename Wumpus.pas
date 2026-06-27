@@ -288,6 +288,42 @@ procedure show_cave_rooms ();
             end
     end;
 
+{ List any hazards in a room, Wumpus, pits, bats }
+procedure warn_of_hazards (room: caveRoom);
+    { room-number -- ; prints the hazards in this room }
+    begin
+        if cave_room_has_wumpus(room) then
+            writeLn('I smell a Wumpus!');
+        if cave_room_has_pit(room) then
+            writeLn('I feel a draft!');
+        if cave_room_has_bats(room) then
+            writeLn('I hear a rustling sound!')
+    end;
+
+{ Warn of any hazards in the neighboring rooms }
+procedure hazards_nearby (room: caveRoom);
+    { room-number -- ; prints the hazards in each neighboring room }
+    var
+        neighbor: caveRoom;
+    begin
+        for neighbor := 1 to 3 do
+            warn_of_hazards(cave[room, neighbor])
+    end;
+
+{ Describe the Hunter's location: room number, neighbors, hazards }
+procedure describe_hunter_location ();
+    { -- ; prints a description of the Hunter's location }
+    begin
+        with current_game_state do
+            begin
+                writeLn('You are in room ', hunter);
+                write('Tunnels lead to rooms:');
+                show_room_neighbors(hunter);
+                writeLn();
+                hazards_nearby(hunter);
+            end
+    end;
+
 { Accept a positive whole number from the player. }
 function input_number () : integer;
     { -- number }
@@ -540,42 +576,6 @@ procedure show_greeting ();
     end;
 
 { Game Play }
-
-{ List any hazards in a room, Wumpus, pits, bats }
-procedure warn_of_hazards (room: caveRoom);
-    { room-number -- ; prints the hazards in this room }
-    begin
-        if cave_room_has_wumpus(room) then
-            writeLn('I smell a Wumpus!');
-        if cave_room_has_pit(room) then
-            writeLn('I feel a draft!');
-        if cave_room_has_bats(room) then
-            writeLn('I hear a rustling sound!')
-    end;
-
-{ Warn of any hazards in the neighboring rooms }
-procedure hazards_nearby (room: caveRoom);
-    { room-number -- ; prints the hazards in each neighboring room }
-    var
-        neighbor: caveRoom;
-    begin
-        for neighbor := 1 to 3 do
-            warn_of_hazards(cave[room, neighbor])
-    end;
-
-{ Describe the Hunter's location: room number, neighbors, hazards }
-procedure describe_hunter_location ();
-    { -- ; prints a description of the Hunter's location }
-    begin
-        with current_game_state do
-            begin
-                writeLn('You are in room ', hunter);
-                write('Tunnels lead to rooms:');
-                show_room_neighbors(hunter);
-                writeLn();
-                hazards_nearby(hunter);
-            end
-    end;
 
 { The Wumpus eats the Hunter if in the same room }
 procedure did_wumpus_eat_hunter ();
