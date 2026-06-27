@@ -5,7 +5,7 @@ type
     pathRoom = 1..5;
     playerState = (IN_PLAY, WON, LOST);
     gameOption = (QUIT_GAME, SAME_ROOMS, NEW_ROOMS);
-    playOption = (MOVE_ME, SHOOT, WHERE_AM_I, GAME_STATE, CAVE_ROOMS);
+    playOption = (MOVE_ME, SHOOT, WHERE_AM_I, GAME_STATE, CAVE_ROOMS, SHUFFLED_ROOMS);
     yesnoOption = (YES, NO);
     gameState = record
         hunter : caveRoom;
@@ -204,22 +204,6 @@ procedure shuffle_room_numbers ();
             end
     end;
 
-{ Show the order in which room numbers will be assigned }
-procedure show_room_numbers ();
-    { -- ; prints the shuffled room numbers }
-    var
-        roomIndex : caveRoom;
-    begin
-        for roomIndex := 1 to 20 do
-            begin
-                write(room_numbers[roomIndex]);
-                if roomIndex = 20 then
-                    writeLn()
-                else
-                    write(' ')
-            end
-    end;
-
 { Create a new starting state for the game,
   with random room assignments for
   the Hunter, Wumpus, pits, and bats;
@@ -260,6 +244,22 @@ procedure show_game_state ();
             end
     end;
 
+{ Show the order in which room numbers will be assigned, for debugging }
+procedure show_room_numbers ();
+    { -- ; prints the shuffled room numbers }
+    var
+        roomIndex : caveRoom;
+    begin
+        for roomIndex := 1 to 20 do
+            begin
+                write(room_numbers[roomIndex]);
+                if roomIndex = 20 then
+                    writeLn()
+                else
+                    write(' ')
+            end
+    end;
+
 { Show a cave room's neighbors, appended to the current line }
 procedure show_room_neighbors (room: caveRoom);
     { room-number -- ; prints a list of a room's neighbors }
@@ -273,7 +273,7 @@ procedure show_room_neighbors (room: caveRoom);
             end    
     end;
 
-{ Show a list of the cave rooms and each one's neighbors }
+{ Show a list of the cave rooms and each one's neighbors, for debugging }
 procedure show_cave_rooms ();
     { -- ; prints a list of the cave rooms and neighbors }
     var
@@ -474,7 +474,8 @@ function prompt_command () : playOption;
                 'w', 'W' : prompt_command := WHERE_AM_I;
                 { - undocumented, for debugging - }
                 'g', 'G' : prompt_command := GAME_STATE;
-                'c', 'C' : prompt_command := CAVE_ROOMS
+                'c', 'C' : prompt_command := CAVE_ROOMS;
+                'r', 'R' : prompt_command := SHUFFLED_ROOMS
             otherwise
                 response_valid := false;
                 writeLn('Huh?')
@@ -789,12 +790,13 @@ function play() : playerState;
         repeat
             command := prompt_command();
             case command of
-                MOVE_ME     : move_hunter();
-                SHOOT       : shoot_arrow();
-                WHERE_AM_I  : describe_hunter_location();
+                MOVE_ME         : move_hunter();
+                SHOOT           : shoot_arrow();
+                WHERE_AM_I      : describe_hunter_location();
                 { - undocumented, for debugging - }
-                GAME_STATE  : show_game_state();
-                CAVE_ROOMS  : show_cave_rooms()
+                GAME_STATE      : show_game_state();
+                CAVE_ROOMS      : show_cave_rooms();
+                SHUFFLED_ROOMS  : show_room_numbers()
             end
         until not (current_game_state.player = IN_PLAY);
         play := current_game_state.player
