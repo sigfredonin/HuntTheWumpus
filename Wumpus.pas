@@ -229,6 +229,59 @@ procedure create_new_initial_state ();
 
 { Player dialogue }
 
+{ Accept a positive whole number from the player. }
+function input_number () : integer;
+    { -- number }
+    const
+        decimal_digits = ['1'..'9'];
+    var
+        response_valid : boolean = false;
+        answer : string;
+        number : integer;
+        code : integer;
+    begin
+        repeat
+            writeLn();
+            write('> ');
+            readLn(answer);
+            if answer[1] in decimal_digits then
+                { OK, starts as a positive decimal number,
+                  and is not "0x..." hex }
+                begin
+                    { Free Pascal - convert string to number;
+                      accepts hex, too (sigh). }
+                    val(answer, number, code);
+                    if (code = 0) and (number > 0) then
+                        response_valid := true
+                end;
+            if not response_valid then
+                write('That is not a valid number.')
+        until response_valid;
+        input_number := number
+    end;
+
+{ Accept the answer to a yes/no question from the player. }
+function prompt_yes_no () : yesnoOption;
+    { -- YES | NO }
+    var
+        response_valid : boolean;
+        answer : string;
+    begin
+        repeat
+            writeLn('(y/n)?');
+            write('> ');
+            readLn(answer);
+            response_valid := true;
+            case answer of
+                'y', 'Y' : prompt_yes_no := YES;
+                'n', 'N' : prompt_yes_no := NO
+            otherwise
+                response_valid := false;
+                writeLn('Huh?')
+            end
+        until response_valid
+    end;
+
 { Show the current game state, for debugging }
 procedure show_game_state ();
     { -- ; prints the elements of the current game state }
@@ -322,59 +375,6 @@ procedure describe_hunter_location ();
                 writeLn();
                 hazards_nearby(hunter);
             end
-    end;
-
-{ Accept a positive whole number from the player. }
-function input_number () : integer;
-    { -- number }
-    const
-        decimal_digits = ['1'..'9'];
-    var
-        response_valid : boolean = false;
-        answer : string;
-        number : integer;
-        code : integer;
-    begin
-        repeat
-            writeLn();
-            write('> ');
-            readLn(answer);
-            if answer[1] in decimal_digits then
-                { OK, starts as a positive decimal number,
-                  and is not "0x..." hex }
-                begin
-                    { Free Pascal - convert string to number;
-                      accepts hex, too (sigh). }
-                    val(answer, number, code);
-                    if (code = 0) and (number > 0) then
-                        response_valid := true
-                end;
-            if not response_valid then
-                write('That is not a valid number.')
-        until response_valid;
-        input_number := number
-    end;
-
-{ Accept the answer to a yes/no question from the player. }
-function prompt_yes_no () : yesnoOption;
-    { -- YES | NO }
-    var
-        response_valid : boolean;
-        answer : string;
-    begin
-        repeat
-            writeLn('(y/n)?');
-            write('> ');
-            readLn(answer);
-            response_valid := true;
-            case answer of
-                'y', 'Y' : prompt_yes_no := YES;
-                'n', 'N' : prompt_yes_no := NO
-            otherwise
-                response_valid := false;
-                writeLn('Huh?')
-            end
-        until response_valid
     end;
 
 { Show the stored crooked arrow path }
