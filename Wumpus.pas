@@ -457,7 +457,7 @@ procedure prompt_arrow_path ();
 
 { Prompt for a command }
 function prompt_command () : playOption;
-    { -- MOVE_ME | SHOOT | WHERE_AM_I | GAME_STATE | CAVE_ROOMS }
+    { -- MOVE_ME | SHOOT | WHERE_AM_I | GAME_STATE | CAVE_ROOMS | SHUFFLED_ROOMS }
     var
         response_valid : boolean = false;
         answer : string;
