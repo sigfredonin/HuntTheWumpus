@@ -1,6 +1,6 @@
 ## Hunt the Wumpus - PASCAL
 
-This is a Forth implementation of the game published in the article
+This is a Pascal implementation of the game published in the article
 "Hunt the Wumpus" by Gregory Yob, in --
 
 *Creative Computing*, Vol. 1, No. 5, September/October 1975, pages 51-54,
