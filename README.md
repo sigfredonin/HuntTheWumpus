@@ -129,8 +129,7 @@ The Pascal code departs from the original BASIC implementation in that the playe
 
 The Pascal code also departs from the original in the wording of messages to the player, the wording of the game instructions, and the manner in which it treats invalid player inputs. 
 
-The code has been tested on Gforth (version 0.7.0, November 2, 2008), and
-SwiftForth (i386-Win32 3.12.0 21-Sep-2023), on Windows 11 (October 2025).
+The code has been tested on Free Pascal for i386 version 3.2.2 May 15, 2021, on Windows 11 (June 2026).
 
 ## License (MIT License)
 
