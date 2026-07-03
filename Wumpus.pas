@@ -596,7 +596,7 @@ procedure move_wumpus ();
     { -- ; may set player state to LOST }
     var
         room : caveRoom;
-        choice : 0..4;
+        choice : 0..3;
     begin
         writeLn('Uh oh! You disturbed the Wumpus!');
         choice := random(4);
