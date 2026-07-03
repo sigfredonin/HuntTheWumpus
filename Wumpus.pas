@@ -341,42 +341,6 @@ procedure show_cave_rooms ();
             end
     end;
 
-{ List any hazards in a room, Wumpus, pits, bats }
-procedure warn_of_hazards (room: caveRoom);
-    { room-number -- ; prints the hazards in this room }
-    begin
-        if cave_room_has_wumpus(room) then
-            writeLn('I smell a Wumpus!');
-        if cave_room_has_pit(room) then
-            writeLn('I feel a draft!');
-        if cave_room_has_bats(room) then
-            writeLn('I hear a rustling sound!')
-    end;
-
-{ Warn of any hazards in the neighboring rooms }
-procedure hazards_nearby (room: caveRoom);
-    { room-number -- ; prints the hazards in each neighboring room }
-    var
-        neighbor: caveRoom;
-    begin
-        for neighbor := 1 to 3 do
-            warn_of_hazards(cave[room, neighbor])
-    end;
-
-{ Describe the Hunter's location: room number, neighbors, hazards }
-procedure describe_hunter_location ();
-    { -- ; prints a description of the Hunter's location }
-    begin
-        with current_game_state do
-            begin
-                writeLn('You are in room ', hunter);
-                write('Tunnels lead to rooms:');
-                show_room_neighbors(hunter);
-                writeLn();
-                hazards_nearby(hunter);
-            end
-    end;
-
 { Show the stored crooked arrow path }
 procedure show_arrow_path ();
     { -- ; prints the programmed arrow path }
@@ -455,6 +419,64 @@ procedure prompt_arrow_path ();
           arrow_path[pathIndex] := prompt_arrow_path_room(pathIndex)
     end;
 
+{ List any hazards in a room, Wumpus, pits, bats }
+procedure warn_of_hazards (room: caveRoom);
+    { room-number -- ; prints the hazards in this room }
+    begin
+        if cave_room_has_wumpus(room) then
+            writeLn('I smell a Wumpus!');
+        if cave_room_has_pit(room) then
+            writeLn('I feel a draft!');
+        if cave_room_has_bats(room) then
+            writeLn('I hear a rustling sound!')
+    end;
+
+{ Warn of any hazards in the neighboring rooms }
+procedure hazards_nearby (room: caveRoom);
+    { room-number -- ; prints the hazards in each neighboring room }
+    var
+        neighbor: caveRoom;
+    begin
+        for neighbor := 1 to 3 do
+            warn_of_hazards(cave[room, neighbor])
+    end;
+
+{ Describe the Hunter's location: room number, neighbors, hazards }
+procedure describe_hunter_location ();
+    { -- ; prints a description of the Hunter's location }
+    begin
+        with current_game_state do
+            begin
+                writeLn('You are in room ', hunter);
+                write('Tunnels lead to rooms:');
+                show_room_neighbors(hunter);
+                writeLn();
+                hazards_nearby(hunter);
+            end
+    end;
+
+{ Get a room number for the Hunter to move to }
+function prompt_new_hunter_room () : caveRoom;
+    { -- room }
+    var
+        room : integer;
+        room_valid : boolean = false;
+    begin
+        repeat
+            write('Where do you want to go?');
+            room := input_number(); { ... might not be in cave }
+            if cave_room_reachable(room, current_game_state.hunter) then
+                { OK, in cave and reachable }
+                room_valid := true
+            else
+                if cave_room_has_hunter(room) then
+                    writeLn('You are already in room ', room)
+                else
+                    writeLn('Can''t get there from here.')
+        until room_valid;
+        prompt_new_hunter_room := room
+    end;
+
 { Prompt for a command }
 function prompt_command () : playOption;
     { -- MOVE_ME | SHOOT | WHERE_AM_I | GAME_STATE | CAVE_ROOMS | SHUFFLED_ROOMS }
@@ -521,28 +543,6 @@ procedure show_results ( finalPlayerState : playerState );
                 writeLn('Condolences, maybe better luck next time.')
             else
                 writeLn(ord(finalPlayerState), ' unknown game result.')
-    end;
-
-{ Get a room number for the Hunter to move to }
-function prompt_new_hunter_room () : caveRoom;
-    { -- room }
-    var
-        room : integer;
-        room_valid : boolean = false;
-    begin
-        repeat
-            write('Where do you want to go?');
-            room := input_number(); { ... might not be in cave }
-            if cave_room_reachable(room, current_game_state.hunter) then
-                { OK, in cave and reachable }
-                room_valid := true
-            else
-                if cave_room_has_hunter(room) then
-                    writeLn('You are already in room ', room)
-                else
-                    writeLn('Can''t get there from here.')
-        until room_valid;
-        prompt_new_hunter_room := room
     end;
 
 { Show the instructions to the player }
