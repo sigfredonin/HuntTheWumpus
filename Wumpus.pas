@@ -683,7 +683,8 @@ procedure fly_arrow ();
               arrow := cave[arrow, choice]
             end;
           write(arrow);
-          { OK, what happens when the arrow reaches this room? }
+          { OK, what happens when the arrow reaches this room? 
+            These tests may set player state to WON or LOST. }
           if not(did_arrow_hit_hunter(arrow) or did_arrow_hit_wumpus(arrow)) then
             { Arrow did not hit anything, try next room in path }
             roomIndex := roomIndex + 1
