@@ -18,7 +18,7 @@ type
 
 const
   wumpus_version : string = 'Version 1.00 - Pascal';
-  instructions : array [1..59] of string = ( 
+  instructions : array [1..60] of string = ( 
     '---- INSTRUCTIONS ----',
     '',
     'Welcome to Hunt the Wumpus! You are a hunter, looking to bag a Wumpus.',
@@ -77,7 +77,8 @@ const
     'new places (well, probably). In any case, you get a fresh',
     'supply of five arrows.',
     '',
-    'Good luck!'
+    'Good luck!',
+    ''
   );
 
   { The cave: 20 rooms, each connected to 3 others,
@@ -134,12 +135,14 @@ function cave_room_reachable (toRoom: integer; fromRoom: integer) : boolean;
   begin
     cave_room_reachable := false;
     if cave_room_number_valid(toRoom) and cave_room_number_valid(fromRoom) then
-      for neighbor := 1 to 3 do
-        if cave[fromRoom, neighbor] = toRoom then
-          begin
+      begin
+        neighbor := 1;
+        repeat
+          if cave[fromRoom, neighbor] = toRoom then
             cave_room_reachable := true;
-            break
-          end
+          neighbor := neighbor + 1
+        until cave_room_reachable or (neighbor > 3)
+      end
   end;
 
 { Does this room have the Hunter in it? }
@@ -667,7 +670,7 @@ procedure fly_arrow ();
         arrow := hunter;
         write(arrow);
         roomIndex := 1;
-        repeat
+        repeat { repeat until all rooms tried or arrow hit something }
           write(' --> ');
           next := arrow_path[roomIndex]; { ... might not be in cave }
           if cave_room_reachable(next, arrow) then
@@ -790,12 +793,12 @@ function play() : playerState;
     repeat
       command := prompt_command();
       case command of
-        MOVE_ME     : move_hunter();
-        SHOOT       : shoot_arrow();
-        WHERE_AM_I    : describe_hunter_location();
+        MOVE_ME         : move_hunter();
+        SHOOT           : shoot_arrow();
+        WHERE_AM_I      : describe_hunter_location();
         { - undocumented, for debugging - }
-        GAME_STATE    : show_game_state();
-        CAVE_ROOMS    : show_cave_rooms();
+        GAME_STATE      : show_game_state();
+        CAVE_ROOMS      : show_cave_rooms();
         SHUFFLED_ROOMS  : show_room_numbers()
       end
     until not (current_game_state.player = IN_PLAY);
