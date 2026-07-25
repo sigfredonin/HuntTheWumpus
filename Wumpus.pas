@@ -249,11 +249,13 @@ function input_number () : integer;
       readLn(answer);
       if answer[1] in decimal_digits then
         { OK, starts as a positive decimal number,
-          and is not "0x..." hex }
+          excludes encodings for hex, octal, binary. }
         begin
           { Free Pascal - convert string to number;
-            accepts hex, too (sigh). }
+            type of 'number'specifies conversion to integer. }
           val(answer, number, code);
+          { Result in 'number' can be large enough to be negative
+            when interpreted as two's complement binary. }
           if (code = 0) and (number > 0) then
             response_valid := true
         end;
@@ -562,12 +564,9 @@ procedure show_instructions ();
 { Show the instructions if wanted }
 procedure show_instructions_if_wanted ();
   { -- ; prompt if instructions wanted, print if yes }
-  var
-    wanted : yesnoOption;
   begin
     write('Show instructions ');
-    wanted := prompt_yes_no();
-    if wanted = YES then
+    if prompt_yes_no() = YES then
       show_instructions()
   end;
 
@@ -681,7 +680,7 @@ procedure fly_arrow ();
               writeLn();
               writeLn('Uh oh! You hit the cave wall, arrow gone astray!');
               write(' --> ');
-              { Arrow enters an adjoining rooms }
+              { Arrow enters an adjoining room }
               choice := 1 + random(3);
               arrow := cave[arrow, choice]
             end;
