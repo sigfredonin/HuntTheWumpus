@@ -252,7 +252,7 @@ function input_number () : integer;
           excludes encodings for hex, octal, binary. }
         begin
           { Free Pascal - convert string to number;
-            type of 'number'specifies conversion to integer. }
+            type of 'number' specifies conversion to integer. }
           val(answer, number, code);
           { Result in 'number' can be large enough to be negative
             when interpreted as two's complement binary. }
