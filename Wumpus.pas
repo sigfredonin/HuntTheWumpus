@@ -572,6 +572,7 @@ procedure show_instructions_if_wanted ();
 
 { Show a greeting to the player }
 procedure show_greeting ();
+  { -- ; print greeting identifying program and version }
   begin
     writeLn('----  ----  Hunt the Wumpus  ----  ----');
     writeLn('- ', wumpus_version);
