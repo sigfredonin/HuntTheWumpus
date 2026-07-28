@@ -598,16 +598,13 @@ procedure did_wumpus_eat_hunter ();
 procedure move_wumpus ();
   { -- ; may set player state to LOST }
   var
-    room : caveRoom;
     choice : 0..3;
   begin
     writeLn('Uh oh! You disturbed the Wumpus!');
     choice := random(4);
     if (choice > 0) then
-      begin
-        room := cave[current_game_state.wumpus, choice];
-        current_game_state.wumpus := room
-      end;
+      with current_game_state do
+        wumpus := cave[wumpus, choice];
     did_wumpus_eat_hunter() { may set player state to LOST }
   end;
 
